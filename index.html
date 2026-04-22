@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ワールドポータル完全版</title>
-    <link rel="icon" href="icon.png" />
   <style>
     :root{
       --bg:#05080f;
@@ -37,7 +36,6 @@
       overflow-x:hidden;
     }
 
-    /* 窓のような背景演出。世界の奥行きを作るための視覚要素。 */
     .window-bg{
       position:fixed; inset:0;
       pointer-events:none;
@@ -195,7 +193,6 @@
       border-top:1px solid rgba(255,255,255,.08);
     }
 
-    /* ローディング演出。最初の印象を強めるための短い導入。 */
     .loader{
       position:fixed; inset:0; z-index:99; display:grid; place-items:center;
       background:radial-gradient(circle at center, rgba(14,22,35,.90), rgba(4,6,11,.98));
@@ -250,7 +247,6 @@
 <body>
   <div class="window-bg"></div>
 
-  <!-- 起動演出。世界がつながる感覚を最初に見せる。 -->
   <div class="loader" id="loader">
     <div class="loader-box">
       <div class="loader-top">
@@ -286,7 +282,7 @@
         <h2>ここは、<span class="accent">記号・国家・企業・AI・歴史</span>がつながる世界です。</h2>
         <p>
           このポータルは、ひと目で世界観の核が伝わるように作られた統合入口です。<br>
-          記号を標準化する組織、特異現象を扱う財団、意識転送の企業、身体保存の対抗組織、人工国家、架空言語、架空AI、歴史記録、アート作品が、同じ宇宙の別レイヤーとして並んでいます。
+          記号を標準化する組織、特異現象を扱う財団、意識転送の企業、身体保存の対抗組織、合理国家、調和国家、架空言語、架空AI、歴史記録、アート作品が、同じ宇宙の別レイヤーとして並んでいます。
         </p>
         <div class="badge-row" style="margin-top:18px;">
           <span class="badge">記号の統一</span>
@@ -295,6 +291,7 @@
           <span class="badge">身体の保存</span>
           <span class="badge">国家と言語</span>
           <span class="badge">歴史の記録</span>
+          <span class="badge">調和と秩序</span>
         </div>
         <div class="hero-actions">
           <a class="btn primary" href="#worlds">世界一覧を見る</a>
@@ -316,7 +313,7 @@
           <p>1. 世界の空気 → 2. 勢力の一覧 → 3. 関係図と歴史、の順で理解しやすくしています。</p>
         </div>
         <div class="stats">
-          <div class="stat"><b>12</b><span>接続先</span></div>
+          <div class="stat"><b>13</b><span>接続先</span></div>
           <div class="stat"><b>7</b><span>勢力軸</span></div>
           <div class="stat"><b>1</b><span>統合世界</span></div>
         </div>
@@ -354,7 +351,7 @@
           <h3>世界一覧</h3>
           <p>各カードから元サイトへ直接移動できます。</p>
         </div>
-        <div class="hint" id="count">12 件表示</div>
+        <div class="hint" id="count">13 件表示</div>
       </div>
       <div class="grid" id="grid"></div>
     </section>
@@ -378,6 +375,10 @@
           <li>
             <b>onva → !anbyam</b>
             <p>国家そのものと、その国家を支える最適化言語が分かれています。世界設定の本体と文法書をセットで扱う構造です。</p>
+          </li>
+          <li>
+            <b>onva ⇄ 和温陣国</b>
+            <p>合理と最適化を追求する国家と、調和・秩序・杖文化を持つ国家の対比構造。世界観の思想的バランスを形成します。</p>
           </li>
         </ul>
       </article>
@@ -411,8 +412,6 @@
   </div>
 
   <script>
-    // 作品ごとの情報を1か所に集約。
-    // ここを書き換えるだけで、ポータルの中身を増減できます。
     const worlds = [
       {
         name: 'Symbolencyclopedia',
@@ -533,6 +532,16 @@
         summary: '各組織・国家・思想の変遷を時系列で整理した記録サイト。世界観を「時間」で理解するための中核アーカイブです。',
         url: 'https://rits1019c1.github.io/wac/',
         tags: ['歴史', '年表', '記録']
+      },
+      {
+        name: 'Waon Jinkoku',
+        jp: '和温陣国',
+        type: 'project',
+        category: '国家 / 世界設定',
+        status: 'pink',
+        summary: '均衡と調和、秩序ある混沌を掲げる国家。ピクセル陰陽を核に、杖文化と王の儀礼で国家の理を保つ世界です。',
+        url: 'https://shun240523-stack.github.io/Waon-Jinkoku/',
+        tags: ['国家', '調和', '杖文化']
       }
     ];
 
@@ -597,7 +606,6 @@
 
     render();
 
-    // ロード演出を少しだけ見せてから本体を表示する。
     window.addEventListener('load', () => {
       setTimeout(() => loader.classList.add('hide'), 900);
     });
